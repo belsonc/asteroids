@@ -3,21 +3,20 @@
 # throughout this file
 import pygame
 
-# import the connect_database function
-# and the database_version variable
-# from database.py into the current file
-#from database import connect_database, database_version
-
 import constants
 
-
+from player import Player
 
 def main():
     pygame.init()
 
     clock = pygame.time.Clock()
     dt = 0
+    x = constants.SCREEN_WIDTH / 2
+    y = constants.SCREEN_HEIGHT / 2
 
+    player = Player(x, y)
+    
     print("Starting Asteroids!")
     print(f"Screen width: {constants.SCREEN_WIDTH}")
     print(f"Screen height: {constants.SCREEN_HEIGHT}")
@@ -28,6 +27,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
+        player.draw(screen)
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 
